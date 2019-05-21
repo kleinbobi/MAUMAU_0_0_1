@@ -12,7 +12,7 @@ public class Client {
 
 
         try {
-            Socket client = new Socket("localhost", 4444);
+            Socket client = new Socket("10.216.122.101", 4444);
 
 
             ObjectOutputStream outToServer = new ObjectOutputStream(client.getOutputStream());
@@ -92,10 +92,8 @@ public class Client {
             case 11:ret = "Unter";break;
             case 12:ret = "Ober";break;
             case 13:ret = "Kini";break;
-            case 14:ret = "As";break;
-
+            case 14:ret = "Ass";break;
         }
         return ret;
     }
-
 }
