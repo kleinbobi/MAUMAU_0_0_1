@@ -5,7 +5,7 @@ import java.util.*;
 public class Server {
 
 
-    private static int SPIELERANZAHL = 3;
+    private static int SPIELERANZAHL = 1;
 
     private static SpielerVerwalter spierler[] = new SpielerVerwalter[SPIELERANZAHL];
 
@@ -111,13 +111,13 @@ public class Server {
         Karte zufohr = set.pop();
 
         System.out.println("GAme started");
-        boolean schongenommen = true;
-        boolean zurück = false;
+        int spieler = 0;
+        boolean weiter = true;
         while (true) {
             for (int i = 0; i < SPIELERANZAHL; i++) {
-                if(zurück){
-                    i--;
-                    zurück = false;
+                if(!weiter){
+                    i = spieler;
+                    weiter = true;
                 }
 
                 spierler[i].setHand();
@@ -131,12 +131,9 @@ public class Server {
                 if (zufohr.getTrumpf() == antwort.getTrumpf() || zufohr.getVal() == antwort.getVal() || antwort.getVal() == 0) {
                     if (antwort.getVal() == 0) {
                         spierler[i].addKarte(set.pop());
-                        if(!schongenommen){
-                            zurück = true;
-                        schongenommen = true;
-                    } else {
-                            schongenommen = false;
-                        }
+                        weiter = false;
+                        spieler = i;
+                    }else {
                         zufohr = antwort;
                         spierler[i].removeKarte(antwort);
                         playedset.add(antwort);
@@ -158,6 +155,9 @@ public class Server {
                         }
                     }
                     System.out.println("OK");
+                    if(spierler[i].getHand().size() == 0){
+                        System.exit(0);
+                    }
                 } else{
                     i--;
                 }
@@ -165,9 +165,7 @@ public class Server {
                     createSet();
                     sortKatemvonHand();
                 }
-                if(spierler[i].getHand().size() == 0){
-                    System.exit(0);
-                }
+
             }
         }
     }

@@ -12,7 +12,7 @@ public class Client {
 
 
         try {
-            Socket client = new Socket("10.216.122.101", 4444);
+            Socket client = new Socket("localhost", 4444);
 
 
             ObjectOutputStream outToServer = new ObjectOutputStream(client.getOutputStream());
@@ -47,10 +47,10 @@ public class Client {
 
     private static Karte consolOut(){
         int i;
-        for ( i = 1; i < hand.size(); i++) {
-            System.out.println(i+" --- "+ getTrumpf(hand.get(i))+"-"+getVal(hand.get(i)));
+        for ( i = 0; i < hand.size(); i++) {
+            System.out.println((i+1)+" --- "+ getTrumpf(hand.get(i))+"-"+getVal(hand.get(i)));
         }
-        System.out.println(i+" --- Kann nicht");
+        System.out.println((i+1)+" --- Kann nicht");
         System.out.print("Welche Karte Spielen?  ");
         Scanner scanner = new Scanner(System.in);
         int a = scanner.nextInt();
