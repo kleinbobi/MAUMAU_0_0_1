@@ -111,7 +111,7 @@ public class Server {
         Karte zufohr = set.pop();
 
         System.out.println("GAme started");
-        boolean schongenommen = false;
+        boolean schongenommen = true;
         boolean zurück = false;
         while (true) {
             for (int i = 0; i < SPIELERANZAHL; i++) {
@@ -143,12 +143,9 @@ public class Server {
                         if (antwort.getVal() == 14) {
                             i++;
                         }
-
-
                         if (antwort.getVal() == 9) {
                             zufohr = new Karte(9, antwort.getWünschen());
                         }
-
                         if (antwort.getVal() == 12) {
                             ober += 2;
                         } else {
@@ -159,7 +156,6 @@ public class Server {
                                 ober = 0;
                             }
                         }
-
                     }
                     System.out.println("OK");
                 } else{
@@ -173,13 +169,8 @@ public class Server {
                     System.exit(0);
                 }
             }
-
-
-
         }
-
     }
-
 
 
     public static void sortKatemvonHand(){
@@ -194,11 +185,7 @@ public class Server {
                         set.remove(k);
                     }
                 }
-
             }
-
-
         }
     }
-
 }
